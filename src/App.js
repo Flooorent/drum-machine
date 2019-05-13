@@ -1,5 +1,30 @@
 import React from 'react';
 import './App.css';
+import DrumpPad from './DrumPad'
+
+const padToSrc = {
+  'Q': 'https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3',
+  'W': 'https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3',
+  'E': 'https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3',
+  'A': 'https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3',
+  'S': 'https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3',
+  'D': 'https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3',
+  'Z': 'https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3',
+  'X': 'https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3',
+  'C': 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3',
+}
+
+const keyCodeToPad = {
+  81: 'Q',
+  87: 'W',
+  69: 'E',
+  65: 'A',
+  83: 'S',
+  68: 'D',
+  90: 'Z',
+  88: 'X',
+  67: 'C',
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -31,36 +56,10 @@ class App extends React.Component {
   }
   
   handleKeyDown(e) {
-    switch(e.keyCode) {
-      case 81:
-        this.playAudio("Q")
-        break
-      case 87:
-        this.playAudio("W")
-        break
-      case 69:
-        this.playAudio("E")
-        break
-      case 65:
-        this.playAudio('A')
-        break
-      case 83:
-        this.playAudio('S')
-        break
-      case 68:
-        this.playAudio('D')
-        break
-      case 90:
-        this.playAudio('Z')
-        break
-      case 88:
-        this.playAudio('X')
-        break
-      case 67:
-        this.playAudio('C')
-        break
-      default:
-        break
+    const pad = keyCodeToPad(e.keyCodeToPad)
+
+    if(pad) {
+      this.playAudio(pad)
     }
   }
   
@@ -69,52 +68,31 @@ class App extends React.Component {
       <div id="drum-machine">
         <div id="drum-machine-content">
           <div id="drum-pads-container">
+
             <div className="drum-row">
-              <div className="drum-pad" id="Q-pad" onClick={() => this.playAudio("Q")}>
-                <div>Q</div>
-                <audio id="Q" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3'></audio>
-              </div>
-              <div className="drum-pad" id="W-pad" onClick={() => this.playAudio("W")}>
-                <p>W</p>
-                <audio id="W" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3'></audio>
-              </div>
-              <div className="drum-pad" id="E-pad" onClick={() => this.playAudio("E")}>
-                <p>E</p>
-                <audio id="E" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3'></audio>
-              </div>
+              <DrumpPad pad='Q' onClick={() => this.playAudio('Q')} src={padToSrc['Q']} />
+              <DrumpPad pad='W' onClick={() => this.playAudio('W')} src={padToSrc['W']} />
+              <DrumpPad pad='E' onClick={() => this.playAudio('E')} src={padToSrc['E']} />
             </div>
+
             <div className="drum-row">
-              <div className="drum-pad" id="A-pad" onClick={() => this.playAudio("A")}>
-                <p>A</p>
-                <audio id="A" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3'></audio>
-              </div>
-              <div className="drum-pad" id="S-pad" onClick={() => this.playAudio("S")}>
-                <p>S</p>
-                <audio id="S" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3'></audio>
-              </div>
-              <div className="drum-pad" id="D-pad" onClick={() => this.playAudio("D")}>
-                <p>D</p>
-                <audio id="D" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3'></audio>
-              </div>
+              <DrumpPad pad='A' onClick={() => this.playAudio('A')} src={padToSrc['A']} />
+              <DrumpPad pad='S' onClick={() => this.playAudio('S')} src={padToSrc['S']} />
+              <DrumpPad pad='D' onClick={() => this.playAudio('D')} src={padToSrc['D']} />
             </div>
+
             <div className="drum-row">
-              <div className="drum-pad" id="Z-pad" onClick={() => this.playAudio("Z")}>
-                <p>Z</p>
-                <audio id="Z" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3'></audio>
-              </div>
-              <div className="drum-pad" id="X-pad" onClick={() => this.playAudio("X")}>
-                <p>X</p>
-                <audio id="X" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3'></audio>
-              </div>
-              <div className="drum-pad" id="C-pad" onClick={() => this.playAudio("C")}>
-                <p>C</p>
-                <audio id="C" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3'></audio>
-              </div>
+              <DrumpPad pad='Z' onClick={() => this.playAudio('Z')} src={padToSrc['Z']} />
+              <DrumpPad pad='X' onClick={() => this.playAudio('X')} src={padToSrc['X']} />
+              <DrumpPad pad='C' onClick={() => this.playAudio('C')} src={padToSrc['C']} />
             </div>
+
           </div>
+
           <div id="knobs-container">
             <div id="display">{this.state.audio}</div>
           </div>
+
         </div>
       </div>
     )
