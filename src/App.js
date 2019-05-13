@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import DrumpPad from './DrumPad'
+import OnOffButton from './OnOffButton'
 
 const padToSrc = {
   'Q': 'https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3',
@@ -31,7 +32,8 @@ class App extends React.Component {
     super(props)
     
     this.state = {
-      audio: ''
+      audio: '',
+      power: true,
     }
     
     this.playAudio = this.playAudio.bind(this)
@@ -56,7 +58,7 @@ class App extends React.Component {
   }
   
   handleKeyDown(e) {
-    const pad = keyCodeToPad(e.keyCodeToPad)
+    const pad = keyCodeToPad[e.keyCodeToPad]
 
     if(pad) {
       this.playAudio(pad)
@@ -90,7 +92,10 @@ class App extends React.Component {
           </div>
 
           <div id="knobs-container">
+            <OnOffButton id="power" />
             <div id="display">{this.state.audio}</div>
+            <div id="sound"></div>
+            <OnOffButton id="bank" />
           </div>
 
         </div>

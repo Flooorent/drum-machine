@@ -1,0 +1,16 @@
+.on-off {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    width: 50px;
+    height: 20px;
+}
+
+.blue {
+    background-color: blue; 
+}
+
+.button {
+    width: 20px;
+    height: 18px; 
+}
