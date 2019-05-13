@@ -1,15 +1,5 @@
 import React from 'react'
-
-/*
-function DrumpPad(props) {
-    return (
-        <div className="drum-pad" id="Q-pad" onClick={() => this.playAudio("Q")}>
-            <div>Q</div>
-            <audio id="Q" className="clip" src='https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3'></audio>
-        </div>
-    )
-}
-*/
+import './DrumPad.css'
 
 function DrumpPad(props) {
     const id = props.pad
