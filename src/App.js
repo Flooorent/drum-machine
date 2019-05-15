@@ -34,10 +34,13 @@ class App extends React.Component {
     this.state = {
       audio: '',
       power: true,
+      volume: '50',
+      display: ''
     }
     
     this.playAudio = this.playAudio.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.handleSlide = this.handleSlide.bind(this)
   }
   
   componentDidMount() {
@@ -53,7 +56,8 @@ class App extends React.Component {
     elem.play()
     
     this.setState({
-      audio: id
+      audio: id,
+      display: id,
     })
   }
   
@@ -63,6 +67,15 @@ class App extends React.Component {
     if(pad) {
       this.playAudio(pad)
     }
+  }
+
+  handleSlide(e) {
+    const newVolume = e.target.value
+
+    this.setState({
+      volume: newVolume,
+      display: `Volume: ${newVolume}`,
+    })
   }
   
   render() {
@@ -93,9 +106,10 @@ class App extends React.Component {
 
           <div id="knobs-container">
             <OnOffButton id="power" />
-            <div id="display">{this.state.audio}</div>
-            <div id="sound"></div>
-            <OnOffButton id="bank" />
+            <div id="display">{this.state.display}</div>
+            <div className="slide-container">
+              <input type="range" min="1" max="100" value={this.state.volume} step="1" className="slider" onChange={this.handleSlide}></input>
+            </div>
           </div>
 
         </div>
