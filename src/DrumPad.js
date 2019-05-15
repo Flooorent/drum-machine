@@ -6,7 +6,7 @@ function DrumpPad(props) {
 
     return (
         <div className="drum-pad" id={`${id}-pad`} onClick={props.onClick}>
-            <div>{id}</div>
+            <div className="bold">{id}</div>
             <audio id={id} className="clip" src={props.src}></audio>
         </div>
     )

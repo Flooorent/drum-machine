@@ -106,7 +106,9 @@ class App extends React.Component {
 
           <div id="knobs-container">
             <OnOffButton id="power" />
-            <div id="display">{this.state.display}</div>
+            <div id="display">
+              <p>{this.state.display}</p>
+            </div>
             <div className="slide-container">
               <input type="range" min="1" max="100" value={this.state.volume} step="1" className="slider" onChange={this.handleSlide}></input>
             </div>

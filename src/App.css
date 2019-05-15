@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: row;
   border: 2px solid;
+  padding: 30px;
 }
 
 #drum-pads-container {
@@ -31,10 +32,15 @@
 }
 
 #display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: solid;
   width: 100px;
   height: 50px;
   background-color: grey;
+  text-align: center;
+  font-weight: bold;
 }
 
 .slider {
