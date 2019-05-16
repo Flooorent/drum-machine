@@ -126,7 +126,7 @@ class App extends React.Component {
           </div>
 
           <div id="knobs-container">
-            <OnOffButton id="power" onClick={this.handlePowerClick}/>
+            <OnOffButton id="power" label="Power" onClick={this.handlePowerClick}/>
             <div id="display">
               <p>{this.state.display}</p>
             </div>

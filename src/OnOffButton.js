@@ -25,9 +25,12 @@ class OnOffButton extends React.Component {
         const rightColor = this.state.on ? 'blue' : ''
 
         return (
-            <div className="on-off" onClick={this.switchButton}>
-                <div className={`button ${leftColor}`}></div>
-                <div className={`button ${rightColor}`}></div>
+            <div className="on-off-container">
+                <div>Power</div>
+                <div className="on-off" onClick={this.switchButton}>
+                    <div className={`button ${leftColor}`}></div>
+                    <div className={`button ${rightColor}`}></div>
+                </div>
             </div>
         )
     }

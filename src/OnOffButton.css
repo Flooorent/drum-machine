@@ -1,9 +1,15 @@
+.on-off-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+}
+
 .on-off {
     display: flex;
     justify-content: space-between;
     background-color: black;
-    width: 50px;
-    height: 20px;
 }
 
 .blue {
@@ -13,4 +19,5 @@
 .button {
     width: 20px;
     height: 18px; 
+    margin: 3px;
 }
