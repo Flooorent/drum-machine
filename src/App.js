@@ -79,6 +79,12 @@ class App extends React.Component {
       this.setState({
         volume: newVolume,
         display: `Volume: ${newVolume}`,
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            display: ''
+          })
+        }, 1000)
       })
     }
   }
