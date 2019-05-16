@@ -8,8 +8,10 @@
 #drum-machine-content {
   display: flex;
   flex-direction: row;
-  border: 2px solid;
+  border: 5px solid;
+  border-color: rgb(255, 165, 0);
   padding: 30px;
+  background-color: #B3B3B3;
 }
 
 #drum-pads-container {
