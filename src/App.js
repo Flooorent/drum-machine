@@ -41,6 +41,7 @@ class App extends React.Component {
     this.playAudio = this.playAudio.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.handleSlide = this.handleSlide.bind(this)
+    this.handlePowerClick = this.handlePowerClick.bind(this)
   }
   
   componentDidMount() {
@@ -52,29 +53,43 @@ class App extends React.Component {
   }
   
   playAudio(id) {
-    const elem = document.getElementById(id)
-    elem.play()
-    
-    this.setState({
-      audio: id,
-      display: id,
-    })
+    if(this.state.power) {
+      const elem = document.getElementById(id)
+      elem.play()
+      
+      this.setState({
+        audio: id,
+        display: id,
+      })
+    }
   }
   
   handleKeyDown(e) {
     const pad = keyCodeToPad[e.keyCodeToPad]
 
-    if(pad) {
+    if(this.state.power && pad) {
       this.playAudio(pad)
     }
   }
 
   handleSlide(e) {
-    const newVolume = e.target.value
+    if(this.state.power) {
+      const newVolume = e.target.value
+
+      this.setState({
+        volume: newVolume,
+        display: `Volume: ${newVolume}`,
+      })
+    }
+  }
+
+  handlePowerClick() {
+    const newPower = !this.state.power
+    const newDisplay = newPower ? this.state.display : ''
 
     this.setState({
-      volume: newVolume,
-      display: `Volume: ${newVolume}`,
+      power: newPower,
+      display: newDisplay
     })
   }
   
@@ -105,7 +120,7 @@ class App extends React.Component {
           </div>
 
           <div id="knobs-container">
-            <OnOffButton id="power" />
+            <OnOffButton id="power" onClick={this.handlePowerClick}/>
             <div id="display">
               <p>{this.state.display}</p>
             </div>

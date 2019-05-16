@@ -15,6 +15,8 @@ class OnOffButton extends React.Component {
     switchButton() {
         this.setState({
             on: !this.state.on
+        }, () => {
+            this.props.onClick()
         })
     }
 
