@@ -69,8 +69,8 @@ class App extends React.Component {
   }
   
   handleKeyDown(e) {
-    const pad = keyCodeToPad[e.keyCodeToPad]
-
+    const pad = keyCodeToPad[e.keyCode]
+    
     if(this.state.power && pad) {
       this.playAudio(pad)
     }
