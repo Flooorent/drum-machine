@@ -59,16 +59,6 @@ class App extends React.Component {
   playAudio(id) {
     if(this.state.power) {
       const elem = document.getElementById(id)
-      const padElem = document.getElementById(`${id}-pad`)
-      const currentBackgroundColor = getComputedStyle(padElem).backgroundColor
-
-      padElem.style.backgroundColor = "rgb(255, 165, 0)"
-
-      setTimeout(
-        () => {
-          padElem.style.backgroundColor = currentBackgroundColor
-        }, 100)
-
       elem.play()
       
       this.setState({
