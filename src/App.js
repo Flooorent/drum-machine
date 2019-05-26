@@ -49,11 +49,19 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    this.addFCCTester()
     document.addEventListener("keydown", this.handleKeyDown)
   }
   
   componentWillUnmount() {
     document.removeEventListener("keydown", this.handleKeyDown)
+  }
+
+  addFCCTester() {
+    const script = document.createElement('script')
+    script.src = 'https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'
+    script.async = true
+    document.body.appendChild(script)
   }
   
   playAudio(id) {
